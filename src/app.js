@@ -15,19 +15,32 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
 app.get("/", (req, res) => {
-    res.send("Bienvenido a la pagina principal");
+    res.render("index", {
+        usuario: [
+            {
+            name: "Agustin",
+            email: "agustin@gmail.com"
+        },
+        {
+            name: "nahuel",
+            email: "nahuel@gmail.com"
+        },
+        {
+            name: "godoy",
+            email: "godoy@gmail.com"
+        },
+        {
+            name: "gaetan",
+            email: "gaetan@gmail.com"
+        },
+    ]
+    });
 });
 
+app.get("/product", function(req, res) {
 
-app.get("/index", (req, res) => {
-    res.render("index");
-});
-
-app.get("/index2", (req, res) => {
-    res.render("index2");
-});
-
-
+    res.render("product");
+})
 
 app.listen(3000, () => console.log("Proyecto en el puerto 3000"));
 
