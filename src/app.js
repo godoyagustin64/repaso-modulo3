@@ -5,8 +5,11 @@ const app = express();
 // Registrar como publica la carpeta public
 
 app.use(express.static(path.join(__dirname, "../public")));
-app.use(express.static(path.join(__dirname, "../publica")));
+app.use("/prefijo", express.static(path.join(__dirname, "../publica")));
 
+// Registrar carpetas estaticas con "prefijos"
+app.use("/desktop", express.static("desktop"));
+app.use("/mobile", express.static("mobile"));
 
 app.get("/", (req, res) => {
     res.send("Bienvenido a la pagina principal");
